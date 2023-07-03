@@ -1,5 +1,10 @@
 FROM databricksruntime/minimal:experimental
 
+# Add deadsnakes/ppa as dependency for python-dev
+RUN apt-get update \
+  && apt-get install -y software-properties-common \
+  && add-apt-repository ppa:deadsnakes/ppa
+  
 # These are the versions compatible for DBR 13.x
 ARG python_version="3.10"
 ARG pip_version="22.2.2"
